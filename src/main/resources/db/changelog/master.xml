@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+	  http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet author="BurlakovEM" id="create-dataset_catalog">
+        <sqlFile path="table/dataset_catalog.sql" relativeToChangelogFile="true" />
+    </changeSet>
+
+    <changeSet author="BurlakovEM" id="create-dataset_field">
+        <sqlFile path="table/dataset_field.sql" relativeToChangelogFile="true" />
+    </changeSet>
+
+    <changeSet author="BurlakovEM" id="create-dataset_tag">
+        <sqlFile path="table/dataset_tag.sql" relativeToChangelogFile="true" />
+    </changeSet>
+
+    <changeSet author="BurlakovEM" id="create-ordered_dataset">
+        <sqlFile path="table/ordered_dataset.sql" relativeToChangelogFile="true" />
+    </changeSet>
+
+    <changeSet author="BurlakovEM" id="insert-dataset_catalog">
+        <sqlFile path="data/dataset_catalog.sql" relativeToChangelogFile="true" />
+    </changeSet>
+
+    <changeSet author="BurlakovEM" id="insert-dataset_field">
+        <sqlFile path="data/dataset_field.sql" relativeToChangelogFile="true" />
+    </changeSet>
+
+    <changeSet author="BurlakovEM" id="insert-dataset_tag">
+        <sqlFile path="data/dataset_tag.sql" relativeToChangelogFile="true" />
+    </changeSet>
+
+</databaseChangeLog>
