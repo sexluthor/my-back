@@ -7,8 +7,8 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: http://localhost:8080/auth/realms/master
-          jwk-set-uri: http://localhost:8080/auth/realms/master/protocol/openid-connect/certs
+          issuer-uri: ${keycloak.host}/auth/realms/${keycloak.realm}
+          jwk-set-uri: ${keycloak.host}/auth/realms/${keycloak.realm}/protocol/openid-connect/certs
 
   liquibase:
     change-log: classpath:db/changelog/master.xml
@@ -24,7 +24,14 @@ spring:
 #      secret: df2f62jKf2iuvbVwu1c7xn4djkbVVndd
 #      expires: 864000 # 10 * 24 * 60 * 60
 
+
+
 headers:
   allow-origin: '*'
   max-age: 3600
+
+keycloak:
+  host: http://localhost:8080
+  realm: master
+  client-id: vtb-hack
 
