@@ -13,6 +13,7 @@ import java.util.List;
 @Repository
 public interface DatasetRepository extends JpaRepository<DatasetEntity, Long>, DatasetRepositoryCustom {
 	List<DatasetEntity> findAllBy();
+	List<DatasetEntity> findAllByIdIn(List<Long> ids);
 
 	@Query(value = "select ds from ru.onemore.vtbhack.back.entity.DatasetEntity ds\n" +
 			"left join ru.onemore.vtbhack.back.jooq.tables.pojos.DatasetTag dt on dt.datasetId = ds.id\n" +
