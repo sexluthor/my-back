@@ -4,6 +4,7 @@ create table dataset_field (
     name 				varchar not null,
     dataset_id			bigint not null,
 	dataset_field_type 	varchar not null,
+	is_primary			boolean not null,
 
     foreign key (dataset_id) references dataset_catalog (id),
     unique (dataset_id, name)
