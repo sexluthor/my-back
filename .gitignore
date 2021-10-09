@@ -34,3 +34,6 @@ build/
 
 ### maven ###
 .mvn
+
+### h2 ###
+*.db
