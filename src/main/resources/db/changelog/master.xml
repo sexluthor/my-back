@@ -33,4 +33,8 @@
         <sqlFile path="data/dataset_tag.sql" relativeToChangelogFile="true" />
     </changeSet>
 
+    <changeSet author="BurlakovEM" id="remove_ordered_dataset">
+        <sqlFile path="table/remove_ordered_dataset.sql" relativeToChangelogFile="true" />
+    </changeSet>
+
 </databaseChangeLog>

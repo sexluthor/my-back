@@ -7,8 +7,8 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: ${KEYCLOAK_HOST}/auth/realms/${KEYCLOAK_REALM}
-          jwk-set-uri: ${KEYCLOAK_HOST}/auth/realms/${KEYCLOAK_REALM}/protocol/openid-connect/certs
+          issuer-uri: ${keycloak.host}/auth/realms/${keycloak.realm}
+          jwk-set-uri: ${keycloak.host}/auth/realms/${keycloak.realm}/protocol/openid-connect/certs
 
   datasource:
     username: ${PG_USERNAME}
@@ -18,4 +18,7 @@ spring:
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://${spring.datasource.host}/${spring.datasource.datebase}
 
-
+keycloak:
+  host: ${KEYCLOAK_HOST}
+  realm: ${KEYCLOAK_REALM}
+  client-id: ${KEYCLOAK_CLIENT}
