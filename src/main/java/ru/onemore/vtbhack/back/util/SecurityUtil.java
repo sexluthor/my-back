@@ -5,6 +5,7 @@ import com.nimbusds.jose.shaded.json.JSONObject;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.oauth2.jwt.Jwt;
+import ru.onemore.vtbhack.back.dto.UserDTO;
 import ru.onemore.vtbhack.back.enumeration.RolesEnum;
 import ru.onemore.vtbhack.back.exception.AuthorizationException;
 
@@ -14,9 +15,12 @@ import java.util.Map;
 
 public class SecurityUtil {
 
-	public static String preferredUsername = "preferred_username";
-	public static String realmAccess = "realm_access";
-	public static String roles = "roles";
+	public static final String preferredUsername = "preferred_username";
+	public static final String realmAccess = "realm_access";
+	public static final String roles = "roles";
+	public static final String email = "email";
+	public static final String givenName = "given_name";
+	public static final String familyName = "family_name";
 
 	public static String getUserLogin() {
 		return (String) getClaims().get(preferredUsername);
@@ -44,6 +48,10 @@ public class SecurityUtil {
 				.toArray(RolesEnum[]::new);
 	}
 
+	public static RolesEnum getUserRole() {
+		return getUserRoles()[0];
+	}
+
 //	public static JwtPayloadDTO getUserDetails() {
 //		return (JwtPayloadDTO) SecurityContextHolder.getContext().getAuthentication().getDetails();
 //	}
@@ -51,6 +59,17 @@ public class SecurityUtil {
 	public static boolean isAuthenticated() {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		return authentication != null && authentication.isAuthenticated();
+	}
+
+	public static UserDTO getUserInfo() {
+		Map<String, Object> claims = getClaims();
+		return new UserDTO(
+			getUserLogin(),
+			(String) claims.get(email),
+			(String) claims.get(givenName),
+			(String) claims.get(familyName),
+			getUserRole()
+		);
 	}
 
 	private static Map<String, Object> getClaims() {
