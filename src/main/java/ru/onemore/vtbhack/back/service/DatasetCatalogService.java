@@ -15,12 +15,12 @@ public class DatasetCatalogService {
 	private final DatasetRepository datasetRepository;
 
 	@Transactional
-	public List<DatasetEntity> getAll(String username) {
+	public List<DatasetEntity> getAll() {
 		return datasetRepository.findAllBy();
 	}
 
 	@Transactional
-	public DatasetEntity getOne(Long id, String username) {
+	public DatasetEntity getOne(Long id) {
 		return datasetRepository.getById(id);
 	}
 

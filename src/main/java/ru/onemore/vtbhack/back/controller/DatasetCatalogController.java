@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ru.onemore.vtbhack.back.entity.DatasetEntity;
 import ru.onemore.vtbhack.back.service.DatasetCatalogService;
-import ru.onemore.vtbhack.back.util.SecurityUtil;
 
 import java.util.List;
 
@@ -21,7 +20,12 @@ public class DatasetCatalogController {
 
 	@GetMapping
 	public List<DatasetEntity> getAll() {
-		return datasetCatalogService.getAll(SecurityUtil.getUserLogin());
+		return datasetCatalogService.getAll();
+	}
+
+	@GetMapping("/{id}")
+	public DatasetEntity getOne(@PathVariable Long id) {
+		return datasetCatalogService.getOne(id);
 	}
 
 }
