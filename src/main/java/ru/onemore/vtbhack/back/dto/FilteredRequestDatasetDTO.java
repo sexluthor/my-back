@@ -14,7 +14,7 @@ public class FilteredRequestDatasetDTO {
 
 	private LocalDateTime dateFrom;
 	private LocalDateTime dateTo;
-	private List<Long> tags;
+	private List<String> tags;
 	private Integer priceFrom;
 	private Integer priceTo;
 
