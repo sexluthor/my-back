@@ -59,8 +59,8 @@ public class DiagramService {
 			List<DatasetField> datasetFields = fields.get(datasetId);
 
 			for (int secondDatasetIndex = datasetIndex + 1; secondDatasetIndex < datasetIds.size(); secondDatasetIndex++) {
-				Long secondId = datasetIds.get(secondDatasetIndex);
-				List<DatasetField> secondDatasetFields = fields.get(secondId);
+				Long secondDatasetId = datasetIds.get(secondDatasetIndex);
+				List<DatasetField> secondDatasetFields = fields.get(secondDatasetId);
 
 				if (secondDatasetFields == null) break;
 
@@ -72,7 +72,7 @@ public class DiagramService {
 						linkDTO.setId(datasetField.getDatasetFieldType() + "(" + datasetField.getDatasetId() + "_" + secondDatasetField.getDatasetId() + ")");
 						linkDTO.setStart_id(datasetId.toString());
 						linkDTO.setStart_port(datasetField.getName());
-						linkDTO.setEnd_id(secondId.toString());
+						linkDTO.setEnd_id(secondDatasetId.toString());
 						linkDTO.setEnd_port(secondDatasetField.getName());
 						linkDTOSet.add(linkDTO);
 					});

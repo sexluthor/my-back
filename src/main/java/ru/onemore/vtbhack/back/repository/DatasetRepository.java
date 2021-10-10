@@ -15,7 +15,7 @@ public interface DatasetRepository extends JpaRepository<DatasetEntity, Long>, D
 	List<DatasetEntity> findAllBy();
 	List<DatasetEntity> findAllByIdIn(List<Long> ids);
 
-	@Query(value = "select ds from ru.onemore.vtbhack.back.entity.DatasetEntity ds\n" +
+	@Query(value = "select distinct ds from ru.onemore.vtbhack.back.entity.DatasetEntity ds\n" +
 			"left join ru.onemore.vtbhack.back.jooq.tables.pojos.DatasetTag dt on dt.datasetId = ds.id\n" +
 			"where ds.lastUpdated between :dateFrom and :dateTo and\n" +
 			"dt.id in (coalesce(:tagIds, dt.id)) and\n" +

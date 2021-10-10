@@ -34,14 +34,6 @@ public class DatasetCatalogService {
 			requestDatasetDTO.getPriceFrom(),
 			requestDatasetDTO.getPriceTo()
 		);
-//		List<DatasetTag> tags = datasetTagsRepository.getAllByIdIn(requestDatasetDTO.getTags());
-//		return datasetRepository.getAllByLastUpdatedBetweenAndTagsInAndPriceBetween(
-//				requestDatasetDTO.getDateFrom(),
-//				requestDatasetDTO.getDateTo(),
-//				tags,
-//				requestDatasetDTO.getPriceFrom(),
-//				requestDatasetDTO.getPriceTo()
-//		);
 	}
 
 	@Transactional
