@@ -89,10 +89,10 @@ public class DiagramService {
 	}
 
 	public DiagramDataDTO getDiagramData(List<Long> datasetIds) {
-		Map<String, DiagramNodeDTO> nodes = getNodes(datasetIds).stream().collect(Collectors.toMap(DiagramNodeDTO::getId, Function.identity()));
 		CompletableFuture<Map<String, DiagramLinkDTO>> linkFeature = CompletableFuture.supplyAsync(() -> {
 			return getLinks(datasetIds).stream().collect(Collectors.toMap(DiagramLinkDTO::getId, Function.identity()));
 		});
+		Map<String, DiagramNodeDTO> nodes = getNodes(datasetIds).stream().collect(Collectors.toMap(DiagramNodeDTO::getId, Function.identity()));
 		return new DiagramDataDTO(
 			nodes,
 			linkFeature.join()
