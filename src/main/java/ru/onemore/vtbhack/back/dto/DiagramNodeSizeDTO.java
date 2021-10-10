@@ -8,6 +8,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class DiagramNodeSizeDTO {
-	private Integer width = 140;
+	private Integer width = 120;
 	private Integer height = 180;
 }

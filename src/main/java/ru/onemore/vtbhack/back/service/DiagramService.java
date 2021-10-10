@@ -49,7 +49,7 @@ public class DiagramService {
 					node.setPortsIn(portsIn);
 					node.setPortsOut(portsOut);
 					node.getSize().setHeight(portsOut.size() * 20 + 20);
-					node.getCoordinates().setX(220 * index);
+					node.getCoordinates().setX(200 * index);
 					return node;
 				}).collect(Collectors.toList());
 	}
