@@ -25,11 +25,11 @@ public class DatasetCatalogService {
 	}
 
 	public FilteredRequestDatasetDTO getDefaultFilterData() {
-		CompletableFuture<List<String>> tags = CompletableFuture.supplyAsync(() ->
-				datasetTagsRepository.getDistinctName());
-		FilteredRequestDatasetDTO filteredRequestDatasetDTO = datasetRepository.getDefaultFilterData();
-		filteredRequestDatasetDTO.setTags(tags.join());
-		return filteredRequestDatasetDTO;
+		return datasetRepository.getDefaultFilterData();
+	}
+
+	public List<String> getTagNames() {
+		return datasetTagsRepository.getDistinctName();
 	}
 
 	@Transactional

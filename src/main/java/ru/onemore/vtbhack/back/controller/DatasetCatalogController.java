@@ -35,6 +35,11 @@ public class DatasetCatalogController {
 		return datasetCatalogService.getDefaultFilterData();
 	}
 
+	@GetMapping("/tag-names")
+	public List<String> getTags() {
+		return datasetCatalogService.getTagNames();
+	}
+
 	@GetMapping("/{id}")
 	public DatasetEntity getOne(@PathVariable Long id) {
 		return datasetCatalogService.getOne(id);

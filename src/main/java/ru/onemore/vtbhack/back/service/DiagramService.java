@@ -10,6 +10,7 @@ import ru.onemore.vtbhack.back.jooq.tables.pojos.DatasetField;
 import ru.onemore.vtbhack.back.repository.DatasetFieldsRepository;
 import ru.onemore.vtbhack.back.repository.DatasetRepository;
 
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -34,13 +35,18 @@ public class DiagramService {
 				.map(dataset -> {
 					int index = atomicInteger.getAndIncrement();
 					DiagramNodeDTO node = new DiagramNodeDTO();
-					Map<String, String> portsOut = dataset.getFields()
-							.stream()
-							.map(DatasetField::getName)
-							.collect(Collectors.toMap(Function.identity(), Function.identity()));
+
+					Map<String, String> portsIn = new HashMap<>();
+					Map<String, String> portsOut = new HashMap<>();
+
+					dataset.getFields().forEach(item -> {
+						portsIn.put(item.getName(), item.getName());
+						portsOut.put(item.getName(), "");
+					});
+
 					node.setId(dataset.getId().toString());
 					node.setTitle(dataset.getName());
-					node.setPortsIn(portsOut);
+					node.setPortsIn(portsIn);
 					node.setPortsOut(portsOut);
 					node.getSize().setHeight(portsOut.size() * 20 + 20);
 					node.getCoordinates().setX(220 * index);
