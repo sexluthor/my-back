@@ -1,4 +1,4 @@
-package ru.onemore.vtbhack.back.hasrole;
+package ru.onemore.vtbhack.back.annotation.hasrole;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
