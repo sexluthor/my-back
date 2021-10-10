@@ -159,6 +159,12 @@
 									<userType>ru.onemore.vtbhack.back.enumeration.TaskStatusEnum</userType>
 									<expression>TASK_STATUS</expression>
 								</forcedType>
+								<forcedType>
+									<types>PUBLIC.DATASET_TAG</types>
+									<enumConverter>true</enumConverter>
+									<userType>ru.onemore.vtbhack.back.enumeration.GlobalTagEnum</userType>
+									<expression>NAME</expression>
+								</forcedType>
 							</forcedTypes>
 						</database>
 						<target>

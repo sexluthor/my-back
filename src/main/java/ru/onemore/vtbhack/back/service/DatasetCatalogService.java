@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.onemore.vtbhack.back.dto.FilteredRequestDatasetDTO;
 import ru.onemore.vtbhack.back.entity.DatasetEntity;
-import ru.onemore.vtbhack.back.jooq.tables.pojos.DatasetTag;
 import ru.onemore.vtbhack.back.repository.DatasetRepository;
 
 import javax.transaction.Transactional;

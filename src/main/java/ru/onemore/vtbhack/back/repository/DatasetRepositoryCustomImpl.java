@@ -5,9 +5,12 @@ import org.jooq.DSLContext;
 import org.jooq.impl.DSL;
 import ru.onemore.vtbhack.back.dto.FilteredRequestDatasetDTO;
 import ru.onemore.vtbhack.back.entity.DatasetEntity;
+import ru.onemore.vtbhack.back.enumeration.GlobalTagEnum;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static ru.onemore.vtbhack.back.jooq.Tables.DATASET_CATALOG;
 import static ru.onemore.vtbhack.back.jooq.Tables.DATASET_FIELD;
@@ -26,7 +29,11 @@ public class DatasetRepositoryCustomImpl implements DatasetRepositoryCustom {
 			DSL.min(DATASET_CATALOG.PRICE).as("price_from"),
 			DSL.max(DATASET_CATALOG.PRICE).as("price_to")
 		).from(DATASET_CATALOG).fetchOneInto(FilteredRequestDatasetDTO.class);
-		requestDatasetDTO.setTags(new ArrayList<>());
+		requestDatasetDTO.setTags(
+			Arrays.asList(GlobalTagEnum.values())
+					.stream().map(GlobalTagEnum::name)
+					.collect(Collectors.toList())
+		);
 		return requestDatasetDTO;
 	}
 
