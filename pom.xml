@@ -152,14 +152,14 @@
 							<inputSchema>PUBLIC</inputSchema>
 							<outputSchema>public</outputSchema>
 							<syntheticPrimaryKeys>public\..*_view\.id</syntheticPrimaryKeys>
-<!--							<forcedTypes>-->
-<!--								<forcedType>-->
-<!--									<types>.*</types>-->
-<!--									<enumConverter>true</enumConverter>-->
-<!--									<userType>ru.onemore.vtbhack.back.enumeration.ProcessOrderPlanningErrorEnum</userType>-->
-<!--									<expression>PROCESS_ORDER_ERROR</expression>-->
-<!--								</forcedType>-->
-<!--							</forcedTypes>-->
+							<forcedTypes>
+								<forcedType>
+									<types>.*</types>
+									<enumConverter>true</enumConverter>
+									<userType>ru.onemore.vtbhack.back.enumeration.TaskStatusEnum</userType>
+									<expression>TASK_STATUS</expression>
+								</forcedType>
+							</forcedTypes>
 						</database>
 						<target>
 							<packageName>ru.onemore.vtbhack.back.jooq</packageName>
@@ -181,30 +181,12 @@
 						<strategy>
 							<matchers>
 								<tables>
-									<table>
-										<expression>RESOURCES</expression>
-										<pojoClass>
-											<expression>Resource</expression>
-										</pojoClass>
-									</table>
-									<table>
-										<expression>PROCESSES</expression>
-										<pojoClass>
-											<expression>Process</expression>
-										</pojoClass>
-									</table>
-									<table>
-										<expression>ORDERS</expression>
-										<pojoClass>
-											<expression>Order</expression>
-										</pojoClass>
-									</table>
-									<table>
-										<expression>SETTINGS</expression>
-										<pojoClass>
-											<expression>Setting</expression>
-										</pojoClass>
-									</table>
+<!--									<table>-->
+<!--										<expression>SETTINGS</expression>-->
+<!--										<pojoClass>-->
+<!--											<expression>Setting</expression>-->
+<!--										</pojoClass>-->
+<!--									</table>-->
 								</tables>
 							</matchers>
 						</strategy>
