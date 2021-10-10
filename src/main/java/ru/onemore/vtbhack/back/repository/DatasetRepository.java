@@ -17,7 +17,7 @@ public interface DatasetRepository extends JpaRepository<DatasetEntity, Long>, D
 	@Query(value = "select distinct ds from ru.onemore.vtbhack.back.entity.DatasetEntity ds\n" +
 			"left join ru.onemore.vtbhack.back.jooq.tables.pojos.DatasetTag dt on dt.datasetId = ds.id\n" +
 			"where ds.lastUpdated between :dateFrom and :dateTo and\n" +
-			"dt.name in (coalesce(:tagNames, dt.name)) and\n" +
+			"dt.name in (:tagNames) and\n" +
 			"ds.price between :priceFrom and :priceTo")
 	List<DatasetEntity> findFiltered(
 		@Param("dateFrom") LocalDateTime dateFrom,
@@ -25,6 +25,13 @@ public interface DatasetRepository extends JpaRepository<DatasetEntity, Long>, D
 		@Param("tagNames") List<String> tagNames,
 		@Param("priceFrom") Integer priceFrom,
 		@Param("priceTo") Integer priceTo
+	);
+
+	List<DatasetEntity> findAllByLastUpdatedBetweenAndPriceBetween(
+		LocalDateTime dateFrom,
+		LocalDateTime dateTo,
+		Integer priceFrom,
+		Integer priceTo
 	);
 
 }

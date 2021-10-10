@@ -34,6 +34,13 @@ public class DatasetCatalogService {
 
 	@Transactional
 	public List<DatasetEntity> getFiltered(FilteredRequestDatasetDTO requestDatasetDTO) {
+		if (requestDatasetDTO.getTags().isEmpty())
+			return datasetRepository.findAllByLastUpdatedBetweenAndPriceBetween(
+				requestDatasetDTO.getDateFrom(),
+				requestDatasetDTO.getDateTo(),
+				requestDatasetDTO.getPriceFrom(),
+				requestDatasetDTO.getPriceTo()
+			);
 		return datasetRepository.findFiltered(
 			requestDatasetDTO.getDateFrom(),
 			requestDatasetDTO.getDateTo(),
