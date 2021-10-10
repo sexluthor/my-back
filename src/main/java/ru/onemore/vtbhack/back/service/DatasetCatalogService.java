@@ -36,16 +36,18 @@ public class DatasetCatalogService {
 	public List<DatasetEntity> getFiltered(FilteredRequestDatasetDTO requestDatasetDTO) {
 		if (requestDatasetDTO.getTags().isEmpty())
 			return datasetRepository.findAllByLastUpdatedBetweenAndPriceBetween(
-					requestDatasetDTO.getDateFrom(),
-					requestDatasetDTO.getDateTo(),
-					requestDatasetDTO.getPriceFrom(),
-					requestDatasetDTO.getPriceTo());
+				requestDatasetDTO.getDateFrom(),
+				requestDatasetDTO.getDateTo(),
+				requestDatasetDTO.getPriceFrom(),
+				requestDatasetDTO.getPriceTo()
+			);
 		return datasetRepository.findFiltered(
 			requestDatasetDTO.getDateFrom(),
 			requestDatasetDTO.getDateTo(),
 			requestDatasetDTO.getTags(),
 			requestDatasetDTO.getPriceFrom(),
-			requestDatasetDTO.getPriceTo());
+			requestDatasetDTO.getPriceTo()
+		);
 	}
 
 	@Transactional
